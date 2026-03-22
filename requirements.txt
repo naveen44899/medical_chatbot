@@ -10,3 +10,4 @@ ipykernel
 langchain-Huggingface
 langchain-groq
 langchain-google-genai
+Flask
