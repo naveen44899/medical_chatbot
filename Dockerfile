@@ -2,16 +2,17 @@ FROM python:3.10-slim-buster
 
 WORKDIR /app
 
-# Install uv
 RUN pip install --no-cache-dir uv
 
-# Copy only requirements first 
 COPY requirements.txt .
 
-# Install dependencies using uv
-RUN uv pip install --system -r requirements.txt
+# Install dependencies WITHOUT project
+RUN uv pip install --system -r requirements.txt --no-deps
 
 # Now copy full project
 COPY . .
+
+# Install your project
+RUN uv pip install --system .
 
 CMD ["python", "app.py"]
