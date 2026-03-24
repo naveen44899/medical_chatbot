@@ -6,13 +6,8 @@ RUN pip install --no-cache-dir uv
 
 COPY requirements.txt .
 
-# Install dependencies WITHOUT project
-RUN uv pip install --system -r requirements.txt --no-deps
+RUN uv pip install --system -r requirements.txt
 
-# Now copy full project
 COPY . .
-
-# Install your project
-RUN uv pip install --system .
 
 CMD ["python", "app.py"]
